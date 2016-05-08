@@ -24,6 +24,7 @@ import com.jakewharton.disklrucache.DiskLruCache;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.Lock;
@@ -181,6 +182,11 @@ public class DualCache<T> {
         mId = id;
         mAppVersion = appVersion;
         mClazz = clazz;
+        if (!Modifier.isAbstract(mClazz.getModifiers()) ||
+                !Modifier.isInterface(mClazz.getModifiers())) {
+            mDiskSerializer = new MemoryEfficientSerializer(clazz);
+            mRamSerializer = mDiskSerializer;
+        }
     }
 
     protected int getAppVersion() {
