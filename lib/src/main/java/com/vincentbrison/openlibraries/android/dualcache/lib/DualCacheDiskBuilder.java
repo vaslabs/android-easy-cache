@@ -114,4 +114,8 @@ public class DualCacheDiskBuilder<T> {
         mDualCache.setDiskMode(DualCache.DualCacheDiskMode.DISABLE);
         return mDualCache;
     }
+
+    public SafeCache<T> safeCache() {
+        return new SafeCache(mDualCache);
+    }
 }
