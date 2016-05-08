@@ -40,6 +40,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class DualCache<T> {
 
+    public SafeCache<T> safeCache() {
+        return new SafeCache<>(this);
+    }
+
     /**
      * Define the behaviour of the RAM layer.
      */

@@ -2,10 +2,6 @@ package com.vincentbrison.openlibraries.android.dualcache.lib;
 
 import android.support.test.InstrumentationRegistry;
 import android.test.AndroidTestCase;
-import android.util.Log;
-
-import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.AbstractVehicule;
-import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.CoolCar;
 
 import org.junit.After;
 import org.junit.Before;

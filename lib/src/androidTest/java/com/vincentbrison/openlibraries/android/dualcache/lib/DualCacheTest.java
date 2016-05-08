@@ -5,7 +5,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.AbstractVehicule;
+import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.AbstractVehicle;
 import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.CoolBike;
 import com.vincentbrison.openlibraries.android.dualcache.lib.testobjects.CoolCar;
 
@@ -24,7 +24,7 @@ public abstract class DualCacheTest extends AndroidTestCase {
     protected static final int DISK_MAX_SIZE = 20 * RAM_MAX_SIZE;
     protected static final String CACHE_NAME = "test";
     protected static final int TEST_APP_VERSION = 0;
-    protected DualCache<AbstractVehicule> mCache;
+    protected DualCache<AbstractVehicle> mCache;
 
     @Before
     @Override
@@ -165,7 +165,7 @@ public abstract class DualCacheTest extends AndroidTestCase {
         assertFalse("test", false);
     }
 
-    private Thread createWrokerThread(final DualCache<AbstractVehicule> cache) {
+    private Thread createWrokerThread(final DualCache<AbstractVehicle> cache) {
         return new Thread() {
             int sMaxNumberOfRun = 1000;
             @Override
@@ -194,10 +194,10 @@ public abstract class DualCacheTest extends AndroidTestCase {
         };
     }
 
-    public static class SerializerForTesting implements Serializer<AbstractVehicule> {
+    public static class SerializerForTesting implements Serializer<AbstractVehicle> {
 
         @Override
-        public AbstractVehicule fromString(String data) {
+        public AbstractVehicle fromString(String data) {
             if (data.equals(CoolBike.class.getSimpleName())) {
                 return new CoolBike();
             } else if (data.equals(CoolCar.class.getSimpleName())) {
@@ -208,15 +208,15 @@ public abstract class DualCacheTest extends AndroidTestCase {
         }
 
         @Override
-        public String toString(AbstractVehicule object) {
+        public String toString(AbstractVehicle object) {
             return object.getClass().getSimpleName();
         }
     }
 
-    public static class SizeOfVehiculeForTesting implements SizeOf<AbstractVehicule> {
+    public static class SizeOfVehiculeForTesting implements SizeOf<AbstractVehicle> {
 
         @Override
-        public int sizeOf(AbstractVehicule object) {
+        public int sizeOf(AbstractVehicle object) {
             int size = 0;
             size += object.getName().length() * 2; // we suppose that char = 2 bytes
             size += 4; // we suppose that int = 4 bytes

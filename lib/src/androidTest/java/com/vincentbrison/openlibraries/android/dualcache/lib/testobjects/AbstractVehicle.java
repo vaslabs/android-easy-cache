@@ -1,6 +1,6 @@
 package com.vincentbrison.openlibraries.android.dualcache.lib.testobjects;
 
-public abstract class AbstractVehicule {
+public abstract class AbstractVehicle {
     protected String mName;
     protected int mWheels;
 
@@ -14,9 +14,9 @@ public abstract class AbstractVehicule {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof AbstractVehicule) {
-            if (mName.equals(((AbstractVehicule) o).getName())
-                    && mWheels == ((AbstractVehicule) o).getWheels()) {
+        if (o instanceof AbstractVehicle) {
+            if (mName.equals(((AbstractVehicle) o).getName())
+                    && mWheels == ((AbstractVehicle) o).getWheels()) {
                 return true;
             } else {
                 return false;
