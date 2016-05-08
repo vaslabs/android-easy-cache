@@ -118,4 +118,5 @@ public class DualCacheDiskBuilder<T> {
     public SafeCache<T> safeCache() {
         return new SafeCache(mDualCache);
     }
+
 }
